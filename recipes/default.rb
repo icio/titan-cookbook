@@ -23,7 +23,8 @@ bash "extract #{tmp}, move it to #{node.titan.installation_dir}" do
 
   code <<-EOS
     rm -rf #{node.titan.installation_dir}
-    unzip #{tmp}
+    unzip -o #{tmp}
+    mkdir -p $(dirname #{node.titan.installation_dir})
     mv --force #{zip_dir} #{node.titan.installation_dir}
   EOS
 
